@@ -18,4 +18,4 @@ const operate = (operator, a, b) => {
     }
 }
 
-console.log(operate('/', 10, 5));
+console.log('hey');
