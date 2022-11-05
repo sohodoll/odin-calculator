@@ -72,28 +72,18 @@ const manageOperators = () => {
 }
 
 const manageEqual = () => {
+    operators.forEach(operator => {
+        operator.addEventListener('click', () => {
+            curOperator = operator.textContent;
+        })
+    })
     equalButton.addEventListener('click', () => {
         secondNum = curNum;
-        if (curOperator == '+') {
-            currentResult = String(operate('+', firstNum, secondNum))
-            display.textContent = currentResult;
-            curNum = '';
-        }
-        if (curOperator == '-') {
-            currentResult = String(operate('-', firstNum, secondNum))
-            display.textContent = currentResult;
-            curNum = '';
-        }
-        if (curOperator == '*') {
-            currentResult = String(operate('*', firstNum, secondNum))
-            display.textContent = currentResult;
-            curNum = '';
-        }
-        if (curOperator == '/') {
-            currentResult = String(operate('/', firstNum, secondNum))
-            display.textContent = currentResult;
-            curNum = '';
-        }
+        console.log(curOperator, firstNum, secondNum);
+        currentResult = operate(curOperator, firstNum, secondNum);
+        firstNum = currentResult;
+        display.textContent = currentResult;
+        curNum = '';
     })
 };
 
