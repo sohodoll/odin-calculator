@@ -1,7 +1,9 @@
-const add = (a,b) => a+b;
-const subtract = (a,b) => a-b;
-const multiply = (a,b) => a*b;
-const divide = (a,b) => a/b;
+//--basic math functions
+
+const add = (a,b) => Number(a) + Number(b);
+const subtract = (a,b) => Number(a) - Number(b);
+const multiply = (a,b) => Number(a) * Number(b);
+const divide = (a,b) => Number(a) / Number(b);
 
 const operate = (operator, a, b) => {
     if (operator == '+') {
@@ -18,4 +20,96 @@ const operate = (operator, a, b) => {
     }
 }
 
-console.log('hey');
+//--populate the display with numbers from the user
+const buttons = Array.from(document.querySelectorAll('.calculator__button'));
+const display = document.querySelector('.calculator__display');
+
+let curNum = '';
+
+const listenForButtons = () => {
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+                curNum += button.textContent;
+                display.textContent = curNum;
+        })
+    })
+}
+
+listenForButtons();
+
+//--main logic
+
+let firstNum = '';
+let secondNum = '';
+let curOperator = '';
+let currentResult = '';
+
+const operators = Array.from(document.querySelectorAll('.calculator__operator'));
+const equalButton = document.querySelector('.equal');
+
+console.log(operators);
+
+const manageOperators = () => {
+
+    equalButton.addEventListener('click', () => {
+
+    });
+
+    operators.forEach(operator => {
+        operator.addEventListener('click', () => {
+            curOperator = operator.textContent;
+            display.textContent += operator.textContent;
+            firstNum = curNum;
+            curNum = '';
+            console.log(firstNum, secondNum, curOperator, currentResult);
+        })
+    })
+}
+
+const manageEqual = () => {
+    equalButton.addEventListener('click', () => {
+        secondNum = curNum;
+        if (curOperator == '+') {
+            currentResult = String(operate('+', firstNum, secondNum))
+            display.textContent = currentResult;
+            curNum = '';
+        }
+        if (curOperator == '-') {
+            currentResult = String(operate('-', firstNum, secondNum))
+            display.textContent = currentResult;
+            curNum = '';
+        }
+        if (curOperator == '*') {
+            currentResult = String(operate('*', firstNum, secondNum))
+            display.textContent = currentResult;
+            curNum = '';
+        }
+        if (curOperator == '/') {
+            currentResult = String(operate('/', firstNum, secondNum))
+            display.textContent = currentResult;
+            curNum = '';
+        }
+    })
+};
+
+//--handle clear button and reset
+
+const reset = () => {
+    curNum = '';
+    firstNum = '';
+    secondNum = '';
+    currentResult = '';
+    display.textContent = '';
+}
+
+const clearButton = document.querySelector('.clear');
+
+const clear = () => {
+    clearButton.addEventListener('click', () => {
+       reset();
+    })
+}
+
+clear();
+manageOperators();
+manageEqual();

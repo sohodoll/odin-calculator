@@ -142,6 +142,7 @@ body {
     background-color: var(--light);
     border-radius: 3px;
     border: 1px var(--darkaccent) solid;
+    justify-content: flex-end;
 }
 
 .calculator__input {
@@ -162,6 +163,10 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
+}
+
+.equal {
+    grid-column: 1 / -1;
 }
 
 .button,
