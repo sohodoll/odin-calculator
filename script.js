@@ -51,17 +51,22 @@ console.log(operators);
 
 const manageOperators = () => {
 
-    equalButton.addEventListener('click', () => {
-
-    });
-
     operators.forEach(operator => {
         operator.addEventListener('click', () => {
-            curOperator = operator.textContent;
-            display.textContent += operator.textContent;
-            firstNum = curNum;
-            curNum = '';
-            console.log(firstNum, secondNum, curOperator, currentResult);
+            if (curOperator === '') {
+                curOperator = operator.textContent;
+                firstNum = curNum;
+                curNum = '';
+            } if (curOperator !== '') {
+                if (curNum !== '') {
+                    secondNum = curNum;
+                    currentResult = operate(curOperator, firstNum, secondNum);
+                    curOperator = operator.textContent;
+                    firstNum = currentResult;
+                    curNum = '';
+                    display.textContent = currentResult;
+                }
+            }
         })
     })
 }
@@ -96,6 +101,7 @@ const manageEqual = () => {
 
 const reset = () => {
     curNum = '';
+    curOperator = '';
     firstNum = '';
     secondNum = '';
     currentResult = '';
