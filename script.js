@@ -53,36 +53,30 @@ const manageOperators = () => {
 
     operators.forEach(operator => {
         operator.addEventListener('click', () => {
+            console.log(curOperator);
             if (curOperator === '') {
                 curOperator = operator.textContent;
                 firstNum = curNum;
                 curNum = '';
-            } if (curOperator !== '') {
-                if (curNum !== '') {
+            } if (curOperator !== '' && curNum !== '') {
                     secondNum = curNum;
                     currentResult = operate(curOperator, firstNum, secondNum);
-                    curOperator = operator.textContent;
                     firstNum = currentResult;
-                    curNum = '';
                     display.textContent = currentResult;
-                }
+                    curNum = '';
             }
+            curOperator = operator.textContent;
+            display.textContent += curOperator;
         })
     })
 }
 
 const manageEqual = () => {
-    operators.forEach(operator => {
-        operator.addEventListener('click', () => {
-            curOperator = operator.textContent;
-        })
-    })
     equalButton.addEventListener('click', () => {
         secondNum = curNum;
-        console.log(curOperator, firstNum, secondNum);
         currentResult = operate(curOperator, firstNum, secondNum);
         firstNum = currentResult;
-        display.textContent = currentResult;
+        display.textContent = (Math.round(currentResult * 100) / 100).toFixed(2);
         curNum = '';
     })
 };
