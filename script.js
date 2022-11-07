@@ -67,6 +67,9 @@ const manageOperators = () => {
             }
             curOperator = operator.textContent;
             display.textContent = firstNum + curOperator;
+            if (currentResult == Infinity) {
+                display.textContent = 'Nice try'
+            };
         })
     })
 }
@@ -78,6 +81,9 @@ const manageEqual = () => {
             currentResult = operate(curOperator, firstNum, secondNum);
             firstNum = currentResult;
             display.textContent = (Math.round(currentResult * 100) / 100).toFixed(2);
+            if (currentResult == Infinity) {
+                display.textContent = 'Nice try'
+            };
             curNum = '';
         };
     });
