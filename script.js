@@ -61,8 +61,8 @@ const manageOperators = () => {
             } if (curOperator !== '' && curNum !== '') {
                     secondNum = curNum;
                     currentResult = operate(curOperator, firstNum, secondNum);
-                    firstNum = currentResult;
-                    display.textContent = (Math.round(currentResult * 100) / 100).toFixed(2);
+                    firstNum = (Math.round(currentResult * 100) / 100).toFixed(2);
+                    display.textContent = firstNum;
                     curNum = '';
             }
             curOperator = operator.textContent;
@@ -79,8 +79,8 @@ const manageEqual = () => {
         secondNum = curNum;
         if(firstNum && secondNum) {
             currentResult = operate(curOperator, firstNum, secondNum);
-            firstNum = currentResult;
-            display.textContent = (Math.round(currentResult * 100) / 100).toFixed(2);
+            firstNum = (Math.round(currentResult * 100) / 100).toFixed(2);
+            display.textContent = firstNum;
             if (currentResult == Infinity) {
                 display.textContent = 'Nice try'
             };
