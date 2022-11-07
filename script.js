@@ -23,14 +23,18 @@ const operate = (operator, a, b) => {
 //--populate the display with numbers from the user
 const buttons = Array.from(document.querySelectorAll('.calculator__button'));
 const display = document.querySelector('.calculator__display');
+const decimalButton = document.querySelector('.decimal');
 
 let curNum = '';
 
 const listenForButtons = () => {
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-                curNum += button.textContent;
-                display.textContent = curNum;
+            if (curNum.includes('.')) {
+                decimalButton.textContent = '';
+            }
+            curNum += button.textContent;
+            display.textContent = curNum; 
         })
     })
 }

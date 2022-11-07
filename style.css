@@ -121,7 +121,7 @@ body {
 /*--calculator--*/
 
 .calculator__wrapper {
-    width: 300px;
+    width: 350px;
     min-height: 500px;
     display: flex;
     flex-direction: column;
@@ -152,12 +152,12 @@ body {
 
 .calculator__buttons {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1.5rem;
 }
 
 .clear {
-    grid-column: 2 / -1;
+    grid-column: 1 / -1;
 }
 
 .calculator__operators {
