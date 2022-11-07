@@ -62,11 +62,11 @@ const manageOperators = () => {
                     secondNum = curNum;
                     currentResult = operate(curOperator, firstNum, secondNum);
                     firstNum = currentResult;
-                    display.textContent = currentResult;
+                    display.textContent = (Math.round(currentResult * 100) / 100).toFixed(2);
                     curNum = '';
             }
             curOperator = operator.textContent;
-            display.textContent += curOperator;
+            display.textContent = firstNum + curOperator;
         })
     })
 }
