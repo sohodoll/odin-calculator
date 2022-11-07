@@ -74,11 +74,13 @@ const manageOperators = () => {
 const manageEqual = () => {
     equalButton.addEventListener('click', () => {
         secondNum = curNum;
-        currentResult = operate(curOperator, firstNum, secondNum);
-        firstNum = currentResult;
-        display.textContent = (Math.round(currentResult * 100) / 100).toFixed(2);
-        curNum = '';
-    })
+        if(firstNum && secondNum) {
+            currentResult = operate(curOperator, firstNum, secondNum);
+            firstNum = currentResult;
+            display.textContent = (Math.round(currentResult * 100) / 100).toFixed(2);
+            curNum = '';
+        };
+    });
 };
 
 //--handle clear button and reset
