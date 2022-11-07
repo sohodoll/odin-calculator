@@ -38,11 +38,13 @@ undoButton.addEventListener('click', () => {
 const listenForButtons = () => {
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            if (curNum.includes('.')) {
-                decimalButton.textContent = '';
+            if ( curNum.length < 9) {
+                if (curNum.includes('.')) {
+                    decimalButton.textContent = '';
+                }
+                curNum += button.textContent;
+                display.textContent = curNum; 
             }
-            curNum += button.textContent;
-            display.textContent = curNum; 
         })
     })
 }
